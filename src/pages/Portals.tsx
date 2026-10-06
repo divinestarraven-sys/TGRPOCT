@@ -115,8 +115,8 @@ const portals: PortalData[] = [
   },
   {
     id: 5,
-    number: 'V',
-    title: 'The 5th Dimensional Gate',
+    number: '5D',
+    title: 'Portal 5D \u2014 The 5th Dimensional Gate',
     subtitle: 'Astral Portal \u2014 The Rhythmic Weave',
     chakra: 'Third Eye Chakra',
     chakraLabel: 'Indigo',
