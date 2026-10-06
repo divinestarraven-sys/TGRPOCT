@@ -360,7 +360,7 @@ export default function Resources() {
                   Mycelium Membership
                 </h3>
                 <p className="font-body text-moonlight-white/40 text-sm leading-relaxed">
-                  Paid member access to weekly guided practices, New Moon Council, resource library, community events circle, and all Seed sections.
+                  Learn together through weekly guided practices, New Moon Council, community events circle, and optional online sessions. Freely available — fees only for live facilitation, to be confirmed.
                 </p>
               </div>
               <Link
