@@ -88,7 +88,7 @@ const projectPublications: ProjectPublication[] = [
       'Community, industry and biohabitation roadmaps.',
     href: '/downloads/green-resonance-roadmaps-2026.pdf',
     edition: 'September 2026 edition',
-    status: 'available',
+    status: 'pending',
   },
 ];
 
