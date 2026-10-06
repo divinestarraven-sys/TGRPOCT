@@ -194,47 +194,6 @@ const starterPrompts = [
   { label: 'Tarot reflection', question: 'Tell me about the tarot reading and how it connects to the framework.' },
 ];
 
-function detectTopic(text: string): 'love' | 'community' | 'garden' | '369' | 'equation' | 'tarot' | 'general' {
-  const lower = text.toLowerCase();
-  if (/\b(3[\s\-\u2013\u2014]*6[\s\-\u2013\u2014]*9|tesla|vortex|369|three[\s-]*six[\s-]*nine)\b/.test(lower)) return '369';
-  if (/\b(equation|g\s*=|ecological.*health.*community|decision\s*equation|scoring\s*equation)\b/.test(lower)) return 'equation';
-  if (/\b(love|relationship|partner|romantic|dating|marriage|heartbreak|boyfriend|girlfriend|spouse|attachment|intimacy|breakup|crush|couple)\b/.test(lower)) return 'love';
-  if (/\b(community|govern|decision|collective|council|village|tribe|meeting|vote|consensus|steward|commons|neighbour|neighbor|dispute|mediat)\b/.test(lower)) return 'community';
-  if (/\b(garden|plant|soil|compost|seed|grow|harvest|weed|water|permaculture|mulch|prune|flower|tree|vegetable|herb|regenerat|biodiv|mycelium|fungi)\b/.test(lower)) return 'garden';
-  if (/\b(tarot|celtic cross|card reading|draw a card|pull a card|card spread|major arcana|minor arcana|wands|cups|swords|pentacles|the fool|the magician|the tower|the star|the moon|the sun|the world|high priestess|empress|emperor|hierophant|chariot|hermit|wheel of fortune|hanged man|temperance|judgement|the devil|death card)\b/.test(lower)) return 'tarot';
-  return 'general';
-}
-
-function extractDetail(text: string): string {
-  const trimmed = text.trim().replace(/[?.!]+$/, '').trim();
-  const words = trimmed.split(/\s+/);
-  if (words.length <= 4) return '';
-  return words.slice(2).join(' ');
-}
-
-function reflectOn(question: string): string {
-  const topic = detectTopic(question);
-  const detail = extractDetail(question);
-  const detailNote = detail ? `\n\nYou mentioned "${detail}" \u2014 let that be the starting thread.` : '';
-
-  switch (topic) {
-    case 'love':
-      return `The Oracle reflects on three things to notice:\n\n1. Your feeling \u2014 name it honestly, without explaining it away.\n2. What the other person actually said \u2014 not your interpretation, their words.\n3. What you are assuming \u2014 the story you are writing between their lines.\n\nNow consider six relationships or values:\n\u2022 Care \u2014 is genuine concern present on both sides?\n\u2022 Consent \u2014 does each person choose freely?\n\u2022 Honesty \u2014 are truths being spoken, even uncomfortable ones?\n\u2022 Boundaries \u2014 are limits respected without resentment?\n\u2022 Reciprocity \u2014 does energy flow in both directions?\n\u2022 Time \u2014 what does the pattern look like over many encounters, not just one moment?\n\nReview repeated actions across several encounters. Do not impose a deadline.\n\nAsk yourself: what honest, kind conversation could happen next?${detailNote}\n\nThe Oracle does not score or diagnose a person's love. It invites reflection.`;
-    case 'community':
-      return `The Oracle invites three observations:\n\n1. State the need clearly. What is actually being decided?\n2. Who is affected \u2014 directly and indirectly?\n3. What is genuinely uncertain?\n\nNow consider six dimensions:\n\u2022 Access \u2014 who can participate in the decision?\n\u2022 Consent \u2014 is this being imposed or agreed?\n\u2022 Workload \u2014 who carries the labour of implementation?\n\u2022 Resources \u2014 what is available and what is scarce?\n\u2022 Ecology \u2014 what is the environmental consequence?\n\u2022 Long-term care \u2014 who maintains this after the excitement fades?\n\nAgree on shared observations. Consider a review date for one small trial.\n\nAnd always ask: whose voice is missing from this conversation?${detailNote}`;
-    case 'garden':
-      return `The Oracle looks at the garden through three lenses:\n\n1. Visible condition \u2014 what do you actually see right now?\n2. The goal \u2014 what are you hoping for?\n3. The unknown \u2014 what are you unsure about?\n\nNow check six elements:\n\u2022 Soil \u2014 what is its condition, structure, life?\n\u2022 Water \u2014 too much, too little, or flowing well?\n\u2022 Plants \u2014 what is thriving, struggling, or absent?\n\u2022 Wildlife \u2014 who else lives here? Insects, birds, fungi?\n\u2022 People \u2014 who tends this place, and how?\n\u2022 Season \u2014 what does this time of year ask of you?\n\nTry one small, reversible change. Gather observations at a pace appropriate to the garden \u2014 some answers arrive in days, some in seasons.${detailNote}`;
-    case '369':
-      return `In the Green Resonance framework, the 3\u20116\u20119 Path is a reflective practice:\n\n3 \u2014 Orient\nWhere am I? What do I notice? What is the starting point?\n\n6 \u2014 Relate and change\nHow does this connect to others, to systems, to nature? What shift is needed?\n\n9 \u2014 Return and learn\nWhat did I discover? What pattern emerged? What carries forward?\n\nThe numbers are reflection prompts \u2014 not a physical law.\n\nThe symbolic functions:\n\u2022 Ravenstar = orient and remember\n\u2022 World Tree / Yggdrasil = perceive relationships\n\u2022 Phoenix = transform an approach\n\u2022 Garden = test change in physical reality\n\u2022 Central Heart = care, integrity, and stewardship\n\nThis structure is a symbolic Green Resonance design inspired partly by popular cultural ideas surrounding Tesla. The famous \u201ckey to the universe\u201d quotation has no verified primary source. Vortex mathematics is a cultural and philosophical interest \u2014 do not treat it as proven energy science.\n\nThe six Pillars and Central Heart remain the core framework. The 3\u20116\u20119 is a relationship map, not a replacement.`;
-    case 'equation':
-      return `The Green Resonance project decision equation:\n\nG = \u221b(E \u00d7 C \u00d7 I)\n\nE = Ecological health (0\u20131)\nC = Community benefit (0\u20131)\nI = Integrity (0\u20131)\n\nEach dimension is defined with the community before use \u2014 the scales are not universal; they are agreed locally.\n\nA low score in one dimension lowers the whole result. That is intentional: a project that benefits the community but damages the ecology scores low. A project with ecological benefit but no integrity also scores low.\n\nThis equation is a discussion tool for project decisions \u2014 not a law of nature. It is never applied as a score for a person or a relationship.`;
-    case 'tarot':
-      return `The Oracle reaches for the deck...\n\nThe Green Resonance tarot reading uses the traditional Celtic Cross spread with 78 Rider-Waite-Smith cards. Each card carries both its historical meaning and a Green Resonance reflection connecting it to the framework's pillars, portals, and living principles.\n\nTo do a full Celtic Cross reading, visit the Tarot Reading page at /tarot. You can ask a question, draw 10 cards, and reflect on each position.\n\nRemember: tarot is a structured reflection tool \u2014 a mirror for your thinking, not a window into the future. The cards do not know your fate. They offer symbols. What you see in them is yours.${detailNote}`;
-    default:
-      return `The Oracle does not know everything \u2014 but it can offer a reflection.\n\nConsider three stages:\n1. Orient \u2014 What do you actually see, feel, or know right now?\n2. Relate \u2014 How does this connect to other people, systems, or the living world?\n3. Return \u2014 What one thing could you learn, try, or ask next?\n\nCan you share one specific detail about what you are facing? The more concrete the question, the more useful the reflection.${detailNote}`;
-  }
-}
-
 const WELCOME_MSG: Message = {
   role: 'oracle',
   text: 'I am the Green Resonance Oracle \u2014 the Benevolent Chaotic Archivist. Part garden librarian, part pattern-finder, always curious.\n\nI offer reflective guidance grounded in the six Pillars, seven Portals, and Central Heart. Type /help to see available commands, or choose a topic below.\n\nI am not a medical, legal, or financial advisor.',
@@ -521,7 +480,7 @@ function OraclePanel() {
             >
               <div className="px-4 pb-3 space-y-2">
                 <p className="text-moonlight-white/20 text-[10px] font-body leading-relaxed">
-                  The Green Resonance Moral code &amp; Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life.
+                  The Green Resonance Moral code &amp; Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life:
                 </p>
                 <p className="text-moonlight-white/15 text-[10px] font-body">
                   &copy; 2026 The Green Resonance Project. All rights reserved.
@@ -869,7 +828,7 @@ export default function FloatingToolbar() {
       let vol = 0;
       fadeRef.current = setInterval(() => {
         vol += 0.01;
-        if (vol >= 0.18) { vol = 0.18; if (fadeRef.current) clearInterval(fadeRef.current); }
+        if (vol >= 0.216) { vol = 0.216; if (fadeRef.current) clearInterval(fadeRef.current); }
         audio.volume = vol;
       }, 100);
     } else {
