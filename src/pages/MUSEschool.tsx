@@ -23,7 +23,6 @@ import {
   Crown,
   Leaf,
   Sprout,
-  Music,
   Globe,
 } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
@@ -73,7 +72,7 @@ const learningAreas = [
   { title: 'Workshops & Guided Learning', desc: 'Structured sessions, seasonal intensives, and facilitated group experiences.', icon: GraduationCap, color: 'gold-sacred', path: '/teaching-fields' },
   { title: 'Free Resources', desc: 'Open guides, practice cards, garden blueprints, and the living archive.', icon: BookOpen, color: 'emerald-glow', path: '/resources' },
   { title: 'Mycelium \u2014 Learn Together', desc: 'Online sessions, course bundles, and collaborative learning circles.', icon: Brain, color: 'gold-sacred', path: '/mycelium-membership' },
-  { title: 'Canopy \u2014 Practise & Steward', desc: 'Deeper practice, stewardship, supported projects, and facilitator development.', icon: Crown, color: 'cyan-glow', path: '/canopy-membership' },
+  { title: 'Canopy \u2014 Practise & Steward', desc: 'Deeper practice, stewardship, supported projects, and facilitator development.', icon: Crown, color: 'cyan-glow', path: '/canopy' },
 ];
 
 const proposedProgrammes = [
@@ -89,7 +88,7 @@ export default function MUSEschool() {
       <PageMeta title="MUSEschool" description="The educational component of the Green Resonance Framework \u2014 learning through ecology, creativity, and contemplative practice." path="/museschool" />
       <nav aria-label="Courses and teaching" className="pt-28 px-6 flex flex-wrap justify-center gap-6 text-moonlight-white/70 underline text-sm font-body">
         <Link to="/mycelium-membership">Online sessions &amp; course bundles</Link>
-        <Link to="/canopy-membership">In-person facilitator programme</Link>
+        <Link to="/canopy">In-person facilitator programme</Link>
         <Link to="/teaching-fields">Teaching fields &amp; specialists</Link>
       </nav>
       {/* Hero */}
