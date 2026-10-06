@@ -28,6 +28,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const SeedMembership = lazy(() => import('./pages/SeedMembership'));
 const MyceliumMembership = lazy(() => import('./pages/MyceliumMembership'));
 const CanopyMembership = lazy(() => import('./pages/CanopyMembership'));
+const Donate = lazy(() => import('./pages/Donate'));
 const StewardshipGames = lazy(() => import('./pages/StewardshipGames'));
 const IndustrialTransition = lazy(() => import('./pages/IndustrialTransition'));
 const Biohabitation = lazy(() => import('./pages/Biohabitation'));
@@ -73,7 +74,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/seed-membership" element={<SeedMembership />} />
             <Route path="/mycelium-membership" element={<MyceliumMembership />} />
-            <Route path="/canopy-membership" element={<CanopyMembership />} />
+            <Route path="/canopy" element={<CanopyMembership />} />
+            <Route path="/donate" element={<Donate />} />
             <Route path="/stewardship-games" element={<StewardshipGames />} />
             <Route path="/industrial-transition" element={<IndustrialTransition />} />
             <Route path="/biohabitation" element={<Biohabitation />} />
@@ -94,7 +96,7 @@ function App() {
             <Route path="/join-the-resonance" element={<Navigate to="/join" replace />} />
             <Route path="/seed" element={<Navigate to="/seed-membership" replace />} />
             <Route path="/mycelium" element={<Navigate to="/mycelium-membership" replace />} />
-            <Route path="/canopy" element={<Navigate to="/canopy-membership" replace />} />
+            <Route path="/canopy-membership" element={<Navigate to="/canopy" replace />} />
             <Route path="/phoenix-principle" element={<Navigate to="/phoenix" replace />} />
             <Route path="/resonance-garden" element={<Navigate to="/garden" replace />} />
             <Route path="/muse-school" element={<Navigate to="/museschool" replace />} />
