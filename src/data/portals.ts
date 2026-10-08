@@ -14,6 +14,10 @@ export interface PortalData {
   chakra?: string;
   chakraLabel?: string;
   symbolicNote?: string;
+  /** Detail-page slug under /portals/ */
+  slug: string;
+  /** Original map artwork path under public/ */
+  mapFile: string;
 }
 
 export const OUTER_PORTALS: PortalData[] = [
@@ -43,6 +47,8 @@ export const OUTER_PORTALS: PortalData[] = [
     spainBearing: 'South',
     chakra: 'Crown Chakra',
     chakraLabel: 'Violet',
+    slug: 'awareness',
+    mapFile: '/images/garden/gr-p1-awareness.jpg',
   },
   {
     id: 2,
@@ -72,6 +78,8 @@ export const OUTER_PORTALS: PortalData[] = [
     spainBearing: 'Southeast',
     chakra: 'Solar Plexus Chakra',
     chakraLabel: 'Yellow',
+    slug: 'ethics',
+    mapFile: '/images/garden/gr-p2-ethics.jpg',
   },
   {
     id: 3,
@@ -101,6 +109,8 @@ export const OUTER_PORTALS: PortalData[] = [
     spainBearing: 'East',
     chakra: 'Root Chakra',
     chakraLabel: 'Red',
+    slug: 'earth',
+    mapFile: '/images/garden/gr-p3-earth.jpg',
   },
   {
     id: 4,
@@ -130,6 +140,8 @@ export const OUTER_PORTALS: PortalData[] = [
     spainBearing: 'North',
     chakra: 'Throat Chakra',
     chakraLabel: 'Blue',
+    slug: 'flow',
+    mapFile: '/images/garden/gr-p4-flow.jpg',
   },
   {
     id: 5,
@@ -160,6 +172,8 @@ export const OUTER_PORTALS: PortalData[] = [
     spainBearing: 'Northwest',
     chakra: 'Third Eye Chakra',
     chakraLabel: 'Indigo',
+    slug: '5d-astral',
+    mapFile: '/images/garden/gr-p5d-astral.jpg',
   },
   {
     id: 6,
@@ -192,6 +206,8 @@ export const OUTER_PORTALS: PortalData[] = [
     spainBearing: 'West',
     chakra: 'Heart Chakra',
     chakraLabel: 'Green',
+    slug: 'muse',
+    mapFile: '/images/garden/gr-p6-muse.jpg',
   },
   {
     id: 7,
@@ -216,6 +232,8 @@ export const OUTER_PORTALS: PortalData[] = [
     colorLight: 'rgba(38, 166, 154, 0.15)',
     spainDegrees: 45,
     spainBearing: 'Northeast',
+    slug: 'renewal',
+    mapFile: '/images/garden/gr-p7-renewal.jpg',
     symbolicNote: 'Modern symbolic/musical correspondence: Uranus, 207.36 Hz — a modern artistic tone reference, not an ancient alchemical assignment or a demonstrated healing frequency.',
   },
   {
@@ -239,6 +257,8 @@ export const OUTER_PORTALS: PortalData[] = [
     colorLight: 'rgba(236, 64, 122, 0.15)',
     spainDegrees: 225,
     spainBearing: 'Southwest',
+    slug: 'communion',
+    mapFile: '/images/garden/gr-p8-communion.jpg',
     symbolicNote: 'Modern symbolic/musical correspondence: Neptune, 211.44 Hz — a modern artistic tone reference, not a demonstrated chakra or healing science claim.',
   },
 ];
@@ -267,8 +287,17 @@ export const CENTRAL_PORTAL: PortalData = {
   spainBearing: 'Centre',
   chakra: 'Soul Star Chakra',
   chakraLabel: 'White/Gold',
+  slug: 'heart',
+  mapFile: '/images/garden/gr-p9-heart.jpg',
 };
 
 export const ALL_PORTALS: PortalData[] = [...OUTER_PORTALS, CENTRAL_PORTAL];
 
 export const PORTALS_TAGLINE = '6 Pillars \u2022 9 Portals \u2022 One Living Whole';
+
+export const MASTER_MAP = {
+  title: 'The Green Resonance Community Garden Master Map 3.6.9',
+  file: '/images/garden/gr-master-369.jpg',
+  alt: 'Master Map 3.6.9 of the Green Resonance Community Garden \u2014 eight outer portals in a regular octagon around the Central Heart, with Spain compass bearings 4 north, 7 northeast, 3 east, 2 southeast, 1 south, 8 southwest, 6 west and 5D northwest',
+  copyright: '\u00a9 2026 Ravenstar & Kelly Murphy \u2014 The Green Resonance Project. All Rights Reserved.',
+};

@@ -14,6 +14,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Framework = lazy(() => import('./pages/Framework'));
 const Pillars = lazy(() => import('./pages/Pillars'));
 const Portals = lazy(() => import('./pages/Portals'));
+const PortalMapDetail = lazy(() => import('./pages/PortalMapDetail'));
 const Ravenstar = lazy(() => import('./pages/Ravenstar'));
 const PhoenixPrinciple = lazy(() => import('./pages/PhoenixPrinciple'));
 const RhythmicWeave = lazy(() => import('./pages/RhythmicWeave'));
@@ -59,6 +60,7 @@ function App() {
             <Route path="/framework" element={<Framework />} />
             <Route path="/pillars" element={<Pillars />} />
             <Route path="/portals" element={<Portals />} />
+            <Route path="/portals/:slug" element={<PortalMapDetail />} />
             <Route path="/ravenstar" element={<Ravenstar />} />
             <Route path="/phoenix" element={<PhoenixPrinciple />} />
             <Route path="/rhythmic-weave" element={<RhythmicWeave />} />

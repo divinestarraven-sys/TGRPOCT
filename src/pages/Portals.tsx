@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ArrowRight, Compass } from 'lucide-react';
+import { ChevronDown, ArrowRight, Compass, Map } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import SacredGeometry from '../components/SacredGeometry';
 import PageTransition from '../components/PageTransition';
@@ -261,11 +261,19 @@ function PortalCard({ portal, isExpanded, onToggle, index }: { portal: PortalDat
                   </div>
                 )}
                 <div className="rounded-xl p-4" style={{ background: portal.colorLight, border: `1px solid ${portal.color}15` }}>
-                  <p className="font-sacred text-sm italic" style={{ color: `${portal.color}cc` }}>
+                  <p className="font-sacred text-sm italic mb-4" style={{ color: `${portal.color}cc` }}>
                     {isCentral
                       ? 'All paths converge here. The centre holds the whole.'
                       : `Enter the ${portal.subtitle} — where ${portal.qualities.slice(0, 2).join(' and ')} become lived experience.`}
                   </p>
+                  <Link
+                    to={`/portals/${portal.slug}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display tracking-wider transition-colors"
+                    style={{ background: `${portal.color}20`, color: portal.color, border: `1px solid ${portal.color}35` }}
+                  >
+                    <Map className="w-3.5 h-3.5" />
+                    View zone map
+                  </Link>
                 </div>
               </div>
             </motion.div>

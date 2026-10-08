@@ -129,7 +129,7 @@ export default function Footer() {
 
         <div className="mt-8 p-4 rounded-xl bg-solarpunk-canopy/10 border border-solarpunk-moss/10">
           <p className="text-moonlight-white/25 text-xs font-body leading-relaxed text-center">
-            The Green Resonance Moral code & Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life:
+            The Green Resonance Moral code & Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life.
           </p>
         </div>
 

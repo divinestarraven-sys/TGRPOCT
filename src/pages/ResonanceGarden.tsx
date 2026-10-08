@@ -23,6 +23,66 @@ import GalleryShowcase from '../components/GalleryShowcase';
 import MyceliumNetwork from '../components/MyceliumNetwork';
 import CymaticWaves from '../components/CymaticWaves';
 import PageMeta from '../components/PageMeta';
+import { useState } from 'react';
+import { Download, Maximize2, ImageOff } from 'lucide-react';
+import { MASTER_MAP } from '../data/portals';
+
+function MasterMapViewer() {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  return (
+    <GlassCard hover={false} className="p-4 sm:p-6">
+      {imgFailed ? (
+        <div className="rounded-xl border border-dashed border-emerald-glow/40 bg-emerald-glow/5 p-10 text-center">
+          <ImageOff className="w-8 h-8 mx-auto mb-3 text-emerald-glow" />
+          <p className="font-display text-sm tracking-widest text-emerald-glow mb-2">MASTER MAP ARTWORK PENDING</p>
+          <p className="font-body text-sm text-moonlight-white/60 max-w-sm mx-auto">
+            The full Master Map 3.6.9 artwork has not been published yet. When it arrives
+            it will appear here, with full-size view and download links.
+          </p>
+        </div>
+      ) : (
+        <a
+          href={MASTER_MAP.file}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block group/map"
+          aria-label="View the Master Map 3.6.9 full size"
+        >
+          <img
+            src={MASTER_MAP.file}
+            alt={MASTER_MAP.alt}
+            className="w-full h-auto rounded-xl border border-solarpunk-moss/25 transition-transform duration-300 group-hover/map:scale-[1.01]"
+            style={{ aspectRatio: '3 / 4', objectFit: 'contain', background: 'rgba(0,0,0,0.25)' }}
+            onError={() => setImgFailed(true)}
+          />
+        </a>
+      )}
+      <p className="font-body text-xs text-moonlight-white/50 mt-4 px-1">{MASTER_MAP.copyright}</p>
+      {!imgFailed && (
+        <div className="flex items-center gap-2 mt-3 px-1">
+          <a
+            href={MASTER_MAP.file}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display tracking-wider bg-[#1a3226] text-solarpunk-biolum border border-solarpunk-biolum/30 hover:bg-[#254434] transition-colors"
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+            View full size
+          </a>
+          <a
+            href={MASTER_MAP.file}
+            download
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display tracking-wider bg-[#1a3226] text-gold-sacred border border-gold-sacred/30 hover:bg-[#254434] transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Download JPG
+          </a>
+        </div>
+      )}
+    </GlassCard>
+  );
+}
 
 const gardenSystems = [
   {
@@ -287,6 +347,17 @@ export default function ResonanceGarden() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Master Map 3.6.9 */}
+      <section className="section-padding relative">
+        <div className="container-sacred max-w-3xl">
+          <SectionHeading
+            title="Master Map 3.6.9"
+            subtitle="The current community garden map — six Pillars, nine Portals, one living whole."
+          />
+          <MasterMapViewer />
         </div>
       </section>
 
