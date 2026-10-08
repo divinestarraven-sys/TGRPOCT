@@ -13,7 +13,7 @@ const navLinks: NavLink[] = [
   { path: '/', label: 'Home', group: 'Start' },
   { path: '/framework', label: 'Framework', group: 'Framework' },
   { path: '/pillars', label: '6 Pillars', group: 'Framework' },
-  { path: '/portals', label: '7 Portals', group: 'Framework' },
+  { path: '/portals', label: '9 Portals', group: 'Framework' },
   { path: '/ravenstar', label: 'Ravenstar', group: 'Mythic' },
   { path: '/phoenix', label: 'Phoenix Principle', group: 'Mythic' },
   { path: '/rhythmic-weave', label: 'Rhythmic Weave', group: 'Mythic' },

@@ -196,7 +196,7 @@ const starterPrompts = [
 
 const WELCOME_MSG: Message = {
   role: 'oracle',
-  text: 'I am the Green Resonance Oracle \u2014 the Benevolent Chaotic Archivist. Part garden librarian, part pattern-finder, always curious.\n\nI offer reflective guidance grounded in the six Pillars, seven Portals, and Central Heart. Type /help to see available commands, or choose a topic below.\n\nI am not a medical, legal, or financial advisor.',
+  text: 'I am the Green Resonance Oracle \u2014 the Benevolent Chaotic Archivist. Part garden librarian, part pattern-finder, always curious.\n\nI offer reflective guidance grounded in the six Pillars, nine Portals, and Central Heart. Type /help to see available commands, or choose a topic below.\n\nI am not a medical, legal, or financial advisor.',
 };
 
 function OraclePanel() {

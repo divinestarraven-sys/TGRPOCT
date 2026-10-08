@@ -8,7 +8,7 @@ const footerLinks = [
     links: [
       { path: '/framework', label: 'The Framework' },
       { path: '/pillars', label: 'The 6 Pillars' },
-      { path: '/portals', label: 'The 7 Portals' },
+      { path: '/portals', label: 'The 9 Portals' },
       { path: '/ravenstar', label: 'Ravenstar' },
       { path: '/phoenix', label: 'The Phoenix Principle' },
     ],

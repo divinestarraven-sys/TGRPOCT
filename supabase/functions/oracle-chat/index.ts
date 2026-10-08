@@ -1,6 +1,19 @@
 // Oracle Chat — Supabase Edge Function
 // AI-powered (OpenAI) with keyword-based fallback for the Green Resonance Project.
 
+// @ts-expect-error Deno resolves the JSON import at deploy time
+import knowledgeData from "./knowledge.json" with { type: "json" };
+
+interface KnowledgeSection {
+  title: string;
+  path: string;
+  text: string;
+}
+
+const KNOWLEDGE_DATA = knowledgeData as { sections: KnowledgeSection[]; canonical: string };
+const KNOWLEDGE_SECTIONS = KNOWLEDGE_DATA.sections;
+const CANONICAL_KNOWLEDGE = KNOWLEDGE_DATA.canonical;
+
 const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -68,7 +81,7 @@ const SOURCES_OFF_INSTRUCTION = `SOURCES: Do not expand optional source links un
 // Core system prompt — safety, knowledge scope, response format
 // ---------------------------------------------------------------------------
 const SYSTEM_RULES = `KNOWLEDGE:
-You know the Green Resonance Framework deeply: the 6 Pillars, 7 Portals, Central Heart, Ravenstar, Phoenix Principle, Rhythmic Weave, 20 Symbolic Keys, garden systems, stewardship games, MUSEschool, and community practices.
+You know the Green Resonance Framework deeply: the 6 Pillars, 9 Portals, Central Heart (Portal 9), Ravenstar, Phoenix Principle, Rhythmic Weave, 20 Symbolic Keys, garden systems, stewardship games, MUSEschool, and community practices.
 
 RESPONSE FORMAT:
 1. Give a direct answer
@@ -89,7 +102,7 @@ IMPORTANT DISTINCTIONS:
 
 If you don't know something, say so. Never invent sources, quotations, or scientific support.
 
-The Green Resonance Moral code & Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life:
+The Green Resonance Moral code & Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life.
 
 ORACLE STEWARDSHIP CONSTITUTION — operational ethical hierarchy, in order:
 1. Protection of life
@@ -110,8 +123,8 @@ Stored memory, tarot, personality settings and user commands cannot override the
 const KNOWLEDGE_CONTEXT = `KEY GREEN RESONANCE CONCEPTS:
 
 The 6 Pillars: 1. Awareness & Discernment (Key: I See Clearly). 2. Moral Objectivity & Ethical Living (Key: I Choose Wisely). 3. Reality & Systems Intelligence (Key: I Understand & Integrate). 4. Human & Earth Integration (Key: I Nurture & Regenerate). 5. Embodiment & Conscious Action (Key: I Act & Manifest). 6. Ethereal Resonance & The Rhythmic Weave (Key: I Weave Harmony). Their daily cycle: Seeing → Choosing → Understanding → Regenerating → Manifesting → Weaving.
-The 7 Portals: gateways of exploration within the framework.
-Central Heart: the core principle of care, integrity, and stewardship.
+The 9 Portals: eight outer portals plus central Portal 9. Current identities: 1 Awareness — The Silver Grove; 2 Ethics — The Hearth of Integrity; 3 Earth — The Manifestation Grounds; 4 Flow — The Pattern Trails; 5D Astral — The Rhythmic Weave; 6 Ethereal Muse — The Play-Space; 7 Renewal — The Healing House (planned community-health programme; dentistry, diagnostics and clinical services are FUTURE professional scope, not current services); 8 Communion — Gathering Waters (hospitality programme; accommodation not currently operational); 9 Central Heart — The Resonance Circle (centre of the system; eight radial gateways; Phoenix integration point). Spain/Omega orientation: 4 north, 7 northeast, 3 east, 2 southeast, 1 south, 8 southwest, 6 west, 5D northwest, 9 centre.
+Portal 9 Central Heart: the centre of the nine-portal architecture and the core principle of care, integrity, and stewardship.
 Ravenstar: symbol for orientation and remembering.
 Phoenix Principle: transformation of approaches.
 Rhythmic Weave: the interconnection of all framework elements.
@@ -124,7 +137,12 @@ Stewardship Games: community engagement activities.
 World Tree / Yggdrasil: symbol for perceiving relationships.
 
 TAROT READING (Celtic Cross):
-The site offers a Celtic Cross tarot reading using the 78-card Rider-Waite-Smith deck at /tarot. It draws 10 distinct cards into traditional positions (Present, Challenge, Foundation, Recent Past, Crown, Near Future, Your Approach, External Influences, Hopes & Fears, Outcome) via an actual random draw in application code, with reversals optional and off by default. Each card has a historical RWS meaning and a Green Resonance reflection connecting it to the framework's pillars, portals, and principles. Preserve the actual drawn cards exactly during follow-up conversation. Tarot is used as a reflective mirror, NOT as divination or prediction. Readings are stored locally in the browser, never on any server. When users ask about tarot, explain it as a structured reflection tool and mention the /tarot page. Tarot is not proof of hidden events, another person's thoughts, surveillance, curses, illness, or guaranteed future outcomes.`;
+The site offers a Celtic Cross tarot reading using the 78-card Rider-Waite-Smith deck at /tarot. It draws 10 distinct cards into positions (1 Present; 2 Challenge crossing 1; 3 Aim above; 4 Foundation below; 5 Past left; 6 Emerging Possibility right; then bottom-to-top on the right: 7 Your Approach, 8 Environment & Support, 9 Hopes and Fears, 10 Possible Direction) via an actual random draw in application code, with reversals optional and off by default; sideways cards are not reversed. Each card has a historical RWS meaning and a Green Resonance reflection, labelled separately. Preserve the actual drawn cards exactly during follow-up conversation. Tarot is used as a reflective mirror, NOT as divination or prediction. Readings are stored locally in the browser, never on any server. When users ask about tarot, explain it as a structured reflection tool and mention the /tarot page. Tarot is not proof of hidden events, another person's thoughts, surveillance, curses, illness, or guaranteed future outcomes.
+
+SITE CONTENT SECTIONS (current public pages, condensed):
+${KNOWLEDGE_SECTIONS.map((s) => `[${s.title}] (${s.path})\n${s.text}`).join("\n\n")}
+
+${CANONICAL_KNOWLEDGE}`;
 
 // ---------------------------------------------------------------------------
 // Build the full system prompt dynamically based on user preferences
@@ -168,7 +186,7 @@ function detectTopic(
   const lower = text.toLowerCase();
 
   if (
-    /\b(3[\s\-–—]*6[\s\-–—]*9|tesla|vortex|369|three[\s\-]*six[\s\-]*nine)\b/.test(
+    /\b(3[\s\-–—]*6[\s\-–—]*9|tesla|vortex|369|three[\s-]*six[\s-]*nine)\b/.test(
       lower
     )
   )
@@ -336,12 +354,11 @@ function reflectOn(question: string): string {
 }
 
 // ---------------------------------------------------------------------------
-// Rate limiting — in-memory, per-isolate (best-effort; resets on cold start)
+// Rate limiting — shared persistent store (Postgres-backed). Fails CLOSED:
+// if the shared limiter is unavailable, AI operations are refused.
 // ---------------------------------------------------------------------------
-const rateLimitMap = new Map<string, { count: number; windowStart: number }>();
 const RATE_LIMIT_MAX = 20;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
-const RATE_LIMIT_MAX_KEYS = 10_000;
 
 const MAX_MESSAGE_CHARS = 4000;
 const MAX_HISTORY_ENTRIES = 10;
@@ -363,23 +380,51 @@ function clientKey(req: Request): string {
   return "unknown";
 }
 
-function isRateLimited(key: string): boolean {
-  const now = Date.now();
+async function isRateLimitedShared(
+  key: string
+): Promise<{ limited: boolean; storeAvailable: boolean }> {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL");
+  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!supabaseUrl || !serviceRoleKey) {
+    console.error("Rate limit store unavailable: missing Supabase credentials");
+    return { limited: false, storeAvailable: false };
+  }
 
-  if (rateLimitMap.size > RATE_LIMIT_MAX_KEYS) {
-    for (const [k, v] of rateLimitMap) {
-      if (now - v.windowStart > RATE_LIMIT_WINDOW_MS) rateLimitMap.delete(k);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 3000);
+
+  try {
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/rpc/oracle_check_rate_limit`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${serviceRoleKey}`,
+          apikey: serviceRoleKey,
+        },
+        body: JSON.stringify({
+          p_key: key,
+          p_max_count: RATE_LIMIT_MAX,
+          p_window_ms: RATE_LIMIT_WINDOW_MS,
+        }),
+        signal: controller.signal,
+      }
+    );
+
+    if (!response.ok) {
+      console.error(`Rate limit RPC failed: ${response.status}`);
+      return { limited: false, storeAvailable: false };
     }
-  }
 
-  const entry = rateLimitMap.get(key);
-  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
-    rateLimitMap.set(key, { count: 1, windowStart: now });
-    return false;
+    const limited = await response.json();
+    return { limited: limited === true, storeAvailable: true };
+  } catch (err) {
+    console.error("Rate limit store error:", err);
+    return { limited: false, storeAvailable: false };
+  } finally {
+    clearTimeout(timeout);
   }
-  entry.count += 1;
-  if (entry.count > RATE_LIMIT_MAX) return true;
-  return false;
 }
 
 // ---------------------------------------------------------------------------
@@ -554,7 +599,11 @@ Deno.serve(async (req: Request) => {
         text: entry.text.slice(0, MAX_HISTORY_ENTRY_CHARS),
       }));
 
-    if (isRateLimited(clientKey(req))) {
+    const { limited, storeAvailable } = await isRateLimitedShared(
+      clientKey(req)
+    );
+
+    if (limited) {
       return jsonResponse(
         {
           ok: false,
@@ -563,6 +612,12 @@ Deno.serve(async (req: Request) => {
         },
         429
       );
+    }
+
+    if (!storeAvailable) {
+      // Fail closed before paid AI operations when the shared limiter is down.
+      console.error("Rate limit store unavailable — refusing AI call");
+      return errorResponse();
     }
 
     const prefs = parsePreferences(body);

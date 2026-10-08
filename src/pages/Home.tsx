@@ -30,7 +30,7 @@ const pillars = [
 
 const featuredSystems = [
   { icon: Eye, title: 'The 6 Pillars', desc: 'Six facets of a daily living rhythm of seeing, choosing, understanding, regenerating, manifesting, and weaving.', path: '/pillars' },
-  { icon: Compass, title: 'The 7 Portals', desc: 'Seven thresholds into the living garden — each a chakra-aligned gateway of practice and place.', path: '/portals' },
+  { icon: Compass, title: 'The 9 Portals', desc: 'Eight outer portals surround the Central Heart, forming a living architecture of awareness, ethics, earth, flow, resonance, creativity, renewal, communion and integration.', path: '/portals' },
   { icon: Star, title: 'Ravenstar', desc: 'The celestial navigation layer and symbolic orientation system above the garden.', path: '/ravenstar' },
   { icon: Flame, title: 'Phoenix Principle', desc: 'The central transformation archetype: conscious regeneration through awareness.', path: '/phoenix' },
   { icon: Sprout, title: 'Resonance Garden', desc: 'The living curriculum — an ecological classroom and regenerative systems laboratory.', path: '/garden' },
@@ -445,7 +445,7 @@ export default function Home() {
               {[
                 { label: 'Seed — Explore & Belong', path: '/seed-membership', icon: Sprout },
                 { label: 'Mycelium — Learn Together', path: '/mycelium-membership', icon: Network },
-                { label: 'Canopy — Practise & Steward', path: '/canopy-membership', icon: Crown },
+                { label: 'Canopy — Practise & Steward', path: '/canopy', icon: Crown },
               ].map((cta, i) => (
                 <motion.div
                   key={cta.label}
