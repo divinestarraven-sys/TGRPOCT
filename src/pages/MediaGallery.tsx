@@ -182,7 +182,7 @@ export default function MediaGallery() {
               transition={{ duration: 0.22 }}
             >
               <img
-                src={currentImage.src}
+                src={currentImage.srcFull ?? currentImage.srcOptimized ?? currentImage.src}
                 alt={currentImage.alt}
                 className="rounded-2xl"
                 style={{

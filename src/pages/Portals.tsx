@@ -446,13 +446,16 @@ export default function Portals() {
 
       <GalleryShowcase
         srcs={[
+          '/images/garden/gr-master-369-thumb.jpg',
+          '/images/garden/gr-p1-awareness-thumb.jpg',
+          '/images/garden/gr-p9-heart-thumb.jpg',
           '/Gallery/01-best-new-garden-map.jpg',
           '/Gallery/02-new-green-resonance-garden-map-delta.jpg',
           '/Gallery/11-keys-to-the-kingdom-delta-master-map.jpg',
         ]}
-        limit={3}
-        title="Portal Maps & Keys (Archive)"
-        subtitle="Historical Seven-Portal Delta artwork — the current framework is the Nine-Portal Omega architecture"
+        limit={6}
+        title="Portal Maps & Keys"
+        subtitle="The current Nine-Portal Omega maps above; historical Seven-Portal Delta artwork below"
       />
     </PageTransition>
   );

@@ -102,9 +102,10 @@ export default function PortalMapDetail() {
                 <p className="font-display text-sm tracking-widest mb-2" style={{ color: portal.color }}>
                   MAP ARTWORK PENDING
                 </p>
-                <p className="font-body text-sm text-moonlight-white/60 max-w-sm mx-auto">
-                  The original zone map for this portal has not been published yet.
-                  When it arrives it will appear here at full resolution, with full-size view and download links.
+                <p className="font-body text-xs text-moonlight-white/50 max-w-md mx-auto">
+                  The 2400px web copy of this zone map has not been published yet.
+                  When it arrives it will appear here upright and full-width, with an open-map
+                  view and a web-JPG download.
                 </p>
               </div>
             ) : (
@@ -118,8 +119,11 @@ export default function PortalMapDetail() {
                 <img
                   src={portal.mapFile}
                   alt={`Zone map of ${portal.title} — ${portal.subtitle}, at ${bearing} in the Green Resonance Community Garden`}
+                  width={2400}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto rounded-xl border transition-transform duration-300 group-hover/map:scale-[1.01]"
-                  style={{ borderColor: `${portal.color}30`, aspectRatio: '3 / 4', objectFit: 'contain', background: 'rgba(0,0,0,0.25)' }}
+                  style={{ borderColor: `${portal.color}30` }}
                   onError={() => setImgFailed(true)}
                 />
               </a>
@@ -135,15 +139,16 @@ export default function PortalMapDetail() {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display tracking-wider bg-[#1a3226] text-solarpunk-biolum border border-solarpunk-biolum/30 hover:bg-[#254434] transition-colors"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
-                  View full size
+                  Open map
                 </a>
                 <a
                   href={portal.mapFile}
                   download
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-display tracking-wider bg-[#1a3226] text-gold-sacred border border-gold-sacred/30 hover:bg-[#254434] transition-colors"
+                  title="2400px web copy of the original map"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  Download JPG
+                  Download web JPG
                 </a>
               </div>
             </div>

@@ -2,6 +2,8 @@ export interface GalleryImage {
   src: string;
   srcOptimized?: string;
   srcWebp?: string;
+  /** Larger copy to open in the lightbox / detail views (falls back to src) */
+  srcFull?: string;
   width?: number;
   height?: number;
   alt: string;
@@ -175,6 +177,86 @@ export const galleryImages: GalleryImage[] = [
     title: 'Six Pillars — Portal Keys Expanded',
     category: 'pillars',
     description: 'Expanded six-pillar card system with portal key sigils, affirmations, action steps, and living integration.',
+  },
+  {
+    src: '/images/garden/gr-master-369-thumb.jpg',
+    srcFull: '/images/garden/gr-master-369-web.jpg',
+    alt: 'Master Map 3.6.9 of the Green Resonance Community Garden — eight outer portals around the Central Heart, Spain compass 4 north, 7 northeast, 3 east, 2 southeast, 1 south, 8 southwest, 6 west, 5D northwest, 9 centre',
+    title: 'Master Map 3.6.9 (Current)',
+    category: 'garden',
+    description: 'The current community garden map: eight outer portals in a regular octagon with walk-through arches, converging on Portal 9 — the Central Heart. © 2026 Ravenstar & Kelly Murphy — The Green Resonance Project. All Rights Reserved.',
+  },
+  {
+    src: '/images/garden/gr-p1-awareness-thumb.jpg',
+    srcFull: '/images/garden/gr-p1-awareness-web.jpg',
+    alt: 'Zone map of Portal 1 — Awareness, The Silver Grove, at the south position',
+    title: 'Portal 1 — Awareness (Current)',
+    category: 'portals',
+    description: 'Current map of the Awareness portal at the Spain/South position: food forest, herb garden, meditation groves, and the Ravenstar Moon Observatory.',
+  },
+  {
+    src: '/images/garden/gr-p2-ethics-thumb.jpg',
+    srcFull: '/images/garden/gr-p2-ethics-web.jpg',
+    alt: 'Zone map of Portal 2 — Ethics, The Hearth of Integrity, at the southeast position',
+    title: 'Portal 2 — Ethics (Current)',
+    category: 'portals',
+    description: 'Current map of the Ethics portal at the Spain/Southeast position: founding accommodation, crew kitchen, and the separate Council Hall.',
+  },
+  {
+    src: '/images/garden/gr-p3-earth-thumb.jpg',
+    srcFull: '/images/garden/gr-p3-earth-web.jpg',
+    alt: 'Zone map of Portal 3 — Earth, The Manifestation Grounds, at the east position',
+    title: 'Portal 3 — Earth (Current)',
+    category: 'portals',
+    description: 'Current map of the Earth portal at the Spain/East position: productive gardens, water systems, chicken rotation, and composting.',
+  },
+  {
+    src: '/images/garden/gr-p4-flow-thumb.jpg',
+    srcFull: '/images/garden/gr-p4-flow-web.jpg',
+    alt: 'Zone map of Portal 4 — Flow, The Pattern Trails, at the north position',
+    title: 'Portal 4 — Flow (Current)',
+    category: 'portals',
+    description: 'Current map of the Flow portal at the Spain/North position: ponds, wetlands, walking trails, and wildlife habitat.',
+  },
+  {
+    src: '/images/garden/gr-p5d-astral-thumb.jpg',
+    srcFull: '/images/garden/gr-p5d-astral-web.jpg',
+    alt: 'Zone map of Portal 5D — Astral Portal, The Rhythmic Weave, at the northwest position',
+    title: 'Portal 5D — The Rhythmic Weave (Current)',
+    category: 'portals',
+    description: 'Current map of the Astral portal at the Spain/Northwest position: Musement Stage, monthly ceremony, music, and collective resonance.',
+  },
+  {
+    src: '/images/garden/gr-p6-muse-thumb.jpg',
+    srcFull: '/images/garden/gr-p6-muse-web.jpg',
+    alt: 'Zone map of Portal 6 — Ethereal Muse, The Play-Space, at the west position',
+    title: 'Portal 6 — Ethereal Muse (Current)',
+    category: 'portals',
+    description: 'Current map of the Ethereal Muse portal at the Spain/West position: natural amphitheatre, wooden band stage, art, play, and bodywork areas.',
+  },
+  {
+    src: '/images/garden/gr-p7-renewal-thumb.jpg',
+    srcFull: '/images/garden/gr-p7-renewal-web.jpg',
+    alt: 'Zone map of Portal 7 — Renewal, The Healing House, at the northeast position',
+    title: 'Portal 7 — Renewal (Current)',
+    category: 'portals',
+    description: 'Current map of the Renewal portal at the Spain/Northeast position: clinic, science, and apothecary functions with future professional scope.',
+  },
+  {
+    src: '/images/garden/gr-p8-communion-thumb.jpg',
+    srcFull: '/images/garden/gr-p8-communion-web.jpg',
+    alt: 'Zone map of Portal 8 — Communion, The Gathering Waters, at the southwest position',
+    title: 'Portal 8 — Communion (Current)',
+    category: 'portals',
+    description: 'Current map of the Communion portal at the Spain/Southwest position: three guest yurts, hospitality and exchange areas, and a separate guest tea kitchen.',
+  },
+  {
+    src: '/images/garden/gr-p9-heart-thumb.jpg',
+    srcFull: '/images/garden/gr-p9-heart-web.jpg',
+    alt: 'Zone map of Portal 9 — Central Heart, The Resonance Circle, at the centre',
+    title: 'Portal 9 — Central Heart (Current)',
+    category: 'portals',
+    description: 'Current map of the Central Heart at the centre: the Oak, labyrinth, Council and ceremony circle, water, and eight radial gateways.',
   },
   {
     src: '/images/garden/Green_Resonance_Master_Map_3_0_Delta.jpg',
