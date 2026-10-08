@@ -319,12 +319,12 @@ function OraclePanel() {
 
   return (
     <>
-      <div className="p-4 border-b border-solarpunk-moss/15 flex items-center gap-2 shrink-0">
+      <div className="p-4 border-b border-solarpunk-moss/30 bg-[#0d1f16] flex items-center gap-2 shrink-0">
         <Sparkles className="w-5 h-5 text-solarpunk-amber" />
         <h3 className="font-display text-sm tracking-widest text-solarpunk-amber flex-1">GREEN RESONANCE ORACLE</h3>
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className={`p-1.5 rounded-lg transition-colors ${showSettings ? 'bg-solarpunk-biolum/15 text-solarpunk-biolum' : 'text-moonlight-white/30 hover:text-moonlight-white/50'}`}
+          className={`p-1.5 rounded-lg transition-colors ${showSettings ? 'bg-[#1a3226] text-solarpunk-biolum' : 'text-[#f5fff8]/60 hover:text-[#f5fff8]'}`}
           aria-label="Oracle settings"
           aria-expanded={showSettings}
         >
@@ -339,11 +339,11 @@ function OraclePanel() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-b border-solarpunk-moss/10 shrink-0"
+            className="overflow-hidden border-b border-solarpunk-moss/25 bg-[#0d1f16] shrink-0"
           >
             <div className="p-3 space-y-3">
               <div>
-                <label className="text-[10px] font-display tracking-wider text-moonlight-white/40 block mb-1.5">Oracle personality</label>
+                <label className="text-[10px] font-display tracking-wider text-[#f5fff8]/70 block mb-1.5">Oracle personality</label>
                 <div className="flex gap-1">
                   {(['low', 'medium', 'high'] as Intensity[]).map((level) => (
                     <button
@@ -351,8 +351,8 @@ function OraclePanel() {
                       onClick={() => { setIntensity(level); savePref(PREF_KEYS.intensity, level); }}
                       className={`flex-1 px-2 py-1.5 rounded-lg text-[11px] font-display tracking-wide transition-all ${
                         intensity === level
-                          ? 'bg-solarpunk-biolum/20 text-solarpunk-biolum border border-solarpunk-biolum/30'
-                          : 'bg-cosmic-deep/30 text-moonlight-white/40 border border-transparent hover:bg-cosmic-deep/50'
+                          ? 'bg-[#1a3226] text-solarpunk-biolum border border-solarpunk-biolum/40'
+                          : 'bg-[#1a3226] text-[#f5fff8]/70 border border-transparent hover:bg-[#254434]'
                       }`}
                     >
                       {level.charAt(0).toUpperCase() + level.slice(1)}
@@ -362,18 +362,18 @@ function OraclePanel() {
               </div>
 
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-display tracking-wider text-moonlight-white/40">Tarot symbolism in chat</label>
+                <label className="text-[10px] font-display tracking-wider text-[#f5fff8]/70">Tarot symbolism in chat</label>
                 <button
                   onClick={() => { const next = !tarotOn; setTarotOn(next); savePref(PREF_KEYS.tarot, String(next)); }}
-                  className={`relative w-9 h-5 rounded-full transition-colors ${tarotOn ? 'bg-solarpunk-biolum/30' : 'bg-cosmic-deep/50'}`}
+                  className={`relative w-9 h-5 rounded-full transition-colors ${tarotOn ? 'bg-solarpunk-biolum/50' : 'bg-[#1a3226]'}`}
                   role="switch"
                   aria-checked={tarotOn}
                 >
-                  <span className={`absolute top-0.5 w-4 h-4 rounded-full transition-all ${tarotOn ? 'left-[18px] bg-solarpunk-biolum' : 'left-0.5 bg-moonlight-white/30'}`} />
+                  <span className={`absolute top-0.5 w-4 h-4 rounded-full transition-all ${tarotOn ? 'left-[18px] bg-solarpunk-biolum' : 'left-0.5 bg-[#f5fff8]/80'}`} />
                 </button>
               </div>
 
-              <p className="text-[9px] font-body text-moonlight-white/20 text-center">
+              <p className="text-[9px] font-body text-[#f5fff8]/60 text-center">
                 Oracle style: {intensity.charAt(0).toUpperCase() + intensity.slice(1)} · Tarot symbolism: {tarotOn ? 'On' : 'Off'}
               </p>
             </div>
@@ -398,12 +398,12 @@ function OraclePanel() {
             <div
               className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm font-body leading-relaxed whitespace-pre-line ${
                 msg.role === 'user'
-                  ? 'bg-solarpunk-canopy/30 text-moonlight-white rounded-br-sm'
+                  ? 'bg-[#1a3226] border border-solarpunk-canopy/40 text-[#f5fff8] rounded-br-sm'
                   : msg.isError
-                    ? 'bg-red-900/20 border border-red-500/20 text-moonlight-white/70 rounded-bl-sm'
+                    ? 'bg-[#3d1512] border border-red-500/40 text-[#f5fff8]/90 rounded-bl-sm'
                     : msg.isFallback
-                      ? 'bg-amber-900/15 border border-amber-500/20 text-moonlight-white/80 rounded-bl-sm'
-                      : 'glass-bio text-moonlight-white/80 rounded-bl-sm'
+                      ? 'bg-[#3a2c10] border border-amber-500/40 text-[#f5fff8]/90 rounded-bl-sm'
+                      : 'bg-[#1a3226] border border-solarpunk-moss/40 text-[#f5fff8]/95 rounded-bl-sm'
               }`}
             >
               {msg.isFallback && (
@@ -423,7 +423,7 @@ function OraclePanel() {
 
         {isThinking && (
           <motion.div className="flex justify-start" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <div className="px-4 py-2.5 rounded-2xl rounded-bl-sm glass-bio text-moonlight-white/60 text-sm font-body">
+            <div className="px-4 py-2.5 rounded-2xl rounded-bl-sm bg-[#1a3226] border border-solarpunk-moss/40 text-[#f5fff8]/70 text-sm font-body">
               The Oracle is pondering...
             </div>
           </motion.div>
@@ -438,7 +438,7 @@ function OraclePanel() {
           >
             <button
               onClick={() => { setLastFailedQuestion(null); addExchange(lastFailedQuestion); }}
-              className="px-4 py-1.5 rounded-full text-xs font-display tracking-wide bg-solarpunk-biolum/10 text-solarpunk-biolum/80 border border-solarpunk-biolum/20 hover:bg-solarpunk-biolum/20 hover:text-solarpunk-biolum transition-all"
+              className="px-4 py-1.5 rounded-full text-xs font-display tracking-wide bg-[#1a3226] text-solarpunk-biolum border border-solarpunk-biolum/40 hover:bg-[#254434] transition-all"
             >
               Retry last question
             </button>
@@ -451,7 +451,7 @@ function OraclePanel() {
               <button
                 key={sp.label}
                 onClick={() => addExchange(sp.question)}
-                className="px-3 py-1.5 rounded-full text-xs font-display tracking-wide bg-solarpunk-biolum/10 text-solarpunk-biolum/80 border border-solarpunk-biolum/20 hover:bg-solarpunk-biolum/20 hover:text-solarpunk-biolum transition-all"
+                className="px-3 py-1.5 rounded-full text-xs font-display tracking-wide bg-[#1a3226] text-solarpunk-biolum border border-solarpunk-biolum/40 hover:bg-[#254434] transition-all"
               >
                 {sp.label}
               </button>
@@ -460,10 +460,10 @@ function OraclePanel() {
         )}
       </div>
 
-      <div className="border-t border-solarpunk-moss/10 shrink-0">
+      <div className="border-t border-solarpunk-moss/25 shrink-0">
         <button
           onClick={() => setShowMoral(!showMoral)}
-          className="w-full flex items-center justify-between px-4 py-2 text-moonlight-white/25 hover:text-moonlight-white/40 transition-colors"
+          className="w-full flex items-center justify-between px-4 py-2 text-[#f5fff8]/60 hover:text-[#f5fff8]/85 transition-colors"
           aria-expanded={showMoral}
         >
           <span className="text-[10px] font-body tracking-wider">Moral code &amp; sources</span>
@@ -479,10 +479,10 @@ function OraclePanel() {
               className="overflow-hidden"
             >
               <div className="px-4 pb-3 space-y-2">
-                <p className="text-moonlight-white/20 text-[10px] font-body leading-relaxed">
+                <p className="text-[#f5fff8]/60 text-[10px] font-body leading-relaxed">
                   The Green Resonance Moral code &amp; Fail-Safe Protocol: The Green Resonance Framework moral coding must never be corrupted by AI, by human, or by any outside influences, EVER! This Project is encoded with eternal principles of Truth, Integrity, Love, Stewardship and Harmony for the greater good of all life:
                 </p>
-                <p className="text-moonlight-white/15 text-[10px] font-body">
+                <p className="text-[#f5fff8]/50 text-[10px] font-body">
                   &copy; 2026 The Green Resonance Project. All rights reserved.
                 </p>
               </div>
@@ -491,7 +491,7 @@ function OraclePanel() {
         </AnimatePresence>
       </div>
 
-      <div className="p-3 border-t border-solarpunk-moss/15 shrink-0">
+      <div className="p-3 border-t border-solarpunk-moss/30 shrink-0">
         <div className="flex gap-2">
           <input
             type="text"
@@ -499,12 +499,12 @@ function OraclePanel() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Ask the Oracle... (or type /help)"
-            className="flex-1 bg-cosmic-deep/50 border border-solarpunk-moss/15 rounded-xl px-4 py-2.5 text-sm font-body text-moonlight-white placeholder:text-moonlight-white/25 focus:outline-none focus:border-solarpunk-biolum/30 transition-colors"
+            className="flex-1 bg-[#0d1f16] border border-solarpunk-moss/40 rounded-xl px-4 py-2.5 text-sm font-body text-[#f5fff8] placeholder:text-[#f5fff8]/50 focus:outline-none focus:border-solarpunk-biolum/60 transition-colors"
             aria-label="Type your question for the Oracle"
           />
           <button
             onClick={handleSend}
-            className="p-2.5 rounded-xl bg-solarpunk-biolum/15 hover:bg-solarpunk-biolum/25 text-solarpunk-biolum transition-colors"
+            className="p-2.5 rounded-xl bg-[#1a3226] hover:bg-[#254434] text-solarpunk-biolum transition-colors"
             aria-label="Send question to the Oracle"
           >
             <Send className="w-4 h-4" />
@@ -570,20 +570,20 @@ function JournalPanel() {
 
   return (
     <>
-      <div className="p-4 border-b border-solarpunk-moss/15 flex items-center gap-2 shrink-0">
+      <div className="p-4 border-b border-solarpunk-moss/30 bg-[#0d1f16] flex items-center gap-2 shrink-0">
         <BookOpen className="w-5 h-5 text-gold-sacred" />
         <h3 className="font-display text-sm tracking-widest text-gold-sacred">RESONANCE JOURNAL</h3>
       </div>
 
-      <div className="p-3 border-b border-solarpunk-moss/15 shrink-0">
+      <div className="p-3 border-b border-solarpunk-moss/30 bg-[#0d1f16] shrink-0">
         <div className="flex gap-2 mb-2">
           <select
             value={selectedPillar}
             onChange={(e) => setSelectedPillar(e.target.value)}
-            className="flex-1 bg-cosmic-deep/50 border border-gold-sacred/15 rounded-lg px-3 py-2 text-xs font-body text-moonlight-white focus:outline-none focus:border-gold-sacred/30 transition-colors appearance-none"
+            className="flex-1 bg-[#0d1f16] border border-gold-sacred/40 rounded-lg px-3 py-2 text-xs font-body text-[#f5fff8] focus:outline-none focus:border-gold-sacred/60 transition-colors appearance-none"
           >
             {pillarOptions.map((p) => (
-              <option key={p} value={p} className="bg-cosmic-deep">{p}</option>
+              <option key={p} value={p} className="bg-[#0d1f16]">{p}</option>
             ))}
           </select>
         </div>
@@ -599,11 +599,11 @@ function JournalPanel() {
             }}
             placeholder="Write your reflection..."
             rows={2}
-            className="flex-1 bg-cosmic-deep/50 border border-gold-sacred/15 rounded-xl px-4 py-2.5 text-sm font-body text-moonlight-white placeholder:text-moonlight-white/25 focus:outline-none focus:border-gold-sacred/30 transition-colors resize-none"
+            className="flex-1 bg-[#0d1f16] border border-gold-sacred/40 rounded-xl px-4 py-2.5 text-sm font-body text-[#f5fff8] placeholder:text-[#f5fff8]/50 focus:outline-none focus:border-gold-sacred/60 transition-colors resize-none"
           />
           <button
             onClick={addEntry}
-            className="p-2.5 rounded-xl bg-gold-sacred/15 hover:bg-gold-sacred/25 text-gold-sacred transition-colors self-end"
+            className="p-2.5 rounded-xl bg-[#1a3226] hover:bg-[#254434] text-gold-sacred transition-colors self-end"
           >
             <Plus className="w-4 h-4" />
           </button>
@@ -612,32 +612,32 @@ function JournalPanel() {
 
       <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[100px]">
         {entries.length === 0 && (
-          <p className="font-sacred text-moonlight-white/25 text-sm text-center py-6 italic">
+          <p className="font-sacred text-[#f5fff8]/55 text-sm text-center py-6 italic">
             Your journal awaits. Write your first reflection.
           </p>
         )}
         {entries.map((entry) => (
           <motion.div
             key={entry.id}
-            className="p-3 rounded-xl bg-cosmic-deep/30 border border-gold-sacred/8 group"
+            className="p-3 rounded-xl bg-[#1a3226] border border-gold-sacred/30 group"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-display tracking-wider text-gold-sacred/50">{entry.date}</span>
+              <span className="text-[10px] font-display tracking-wider text-gold-sacred/75">{entry.date}</span>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-display tracking-wider text-moonlight-white/25">{entry.pillar}</span>
+                <span className="text-[10px] font-display tracking-wider text-[#f5fff8]/60">{entry.pillar}</span>
                 <button
                   onClick={() => deleteEntry(entry.id)}
                   className="opacity-0 group-hover:opacity-100 transition-opacity"
                   aria-label={`Delete entry from ${entry.date}`}
                 >
-                  <Trash2 className="w-3 h-3 text-moonlight-white/20 hover:text-red-400/60" />
+                  <Trash2 className="w-3 h-3 text-[#f5fff8]/60 hover:text-red-400" />
                 </button>
               </div>
             </div>
-            <p className="font-body text-sm text-moonlight-white/60 leading-relaxed">{entry.text}</p>
+            <p className="font-body text-sm text-[#f5fff8]/90 leading-relaxed">{entry.text}</p>
           </motion.div>
         ))}
       </div>
@@ -717,7 +717,7 @@ function HarmonicPanel() {
 
   return (
     <>
-      <div className="p-4 border-b border-solarpunk-moss/15 shrink-0">
+      <div className="p-4 border-b border-solarpunk-moss/30 bg-[#0d1f16] shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Volume2 className="w-5 h-5 text-cyan-ether" />
@@ -726,21 +726,21 @@ function HarmonicPanel() {
           <div className="flex items-center gap-1">
             <button
               onClick={handlePause}
-              className="p-1.5 rounded-lg bg-cosmic-deep/50 text-moonlight-white/40 hover:text-moonlight-white transition-colors"
+              className="p-1.5 rounded-lg bg-[#1a3226] text-[#f5fff8]/70 hover:text-[#f5fff8] transition-colors"
               aria-label={isPlaying ? 'Pause frequency' : 'Play frequency'}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             </button>
             <button
               onClick={toggleMute}
-              className="p-1.5 rounded-lg bg-cosmic-deep/50 text-moonlight-white/40 hover:text-moonlight-white transition-colors"
+              className="p-1.5 rounded-lg bg-[#1a3226] text-[#f5fff8]/70 hover:text-[#f5fff8] transition-colors"
               aria-label={isMuted ? 'Unmute' : 'Mute'}
             >
               {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
             </button>
           </div>
         </div>
-        <p className="text-[10px] font-body text-moonlight-white/25 mt-1">
+        <p className="text-[10px] font-body text-[#f5fff8]/55 mt-1">
           Symbolic and contemplative. Not scientific proof. No autoplay.
         </p>
       </div>
@@ -750,7 +750,7 @@ function HarmonicPanel() {
           <motion.button
             key={f.name}
             onClick={() => playFreq(f.freq, i)}
-            className="w-full flex items-center gap-3 p-2.5 rounded-xl hover:bg-cosmic-deep/30 transition-all group"
+            className="w-full flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#1a3226] transition-all group"
             whileHover={{ x: 4 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -770,12 +770,12 @@ function HarmonicPanel() {
               />
             </div>
             <div className="flex-1 text-left">
-              <p className="text-xs font-display tracking-wider text-moonlight-white/70 group-hover:text-moonlight-white transition-colors">
+              <p className="text-xs font-display tracking-wider text-[#f5fff8]/90 group-hover:text-[#f5fff8] transition-colors">
                 {f.name}
               </p>
-              <p className="text-[10px] font-body text-moonlight-white/30">{f.desc}</p>
+              <p className="text-[10px] font-body text-[#f5fff8]/60">{f.desc}</p>
             </div>
-            <span className="text-[10px] font-display text-moonlight-white/15">{f.freq}Hz</span>
+            <span className="text-[10px] font-display text-[#f5fff8]/50">{f.freq}Hz</span>
           </motion.button>
         ))}
       </div>
@@ -882,7 +882,7 @@ export default function FloatingToolbar() {
                   ? 'Resonance Journal'
                   : 'Harmonic Frequencies Player'
             }
-            className="fixed z-[998] bottom-[calc(5rem+env(safe-area-inset-bottom,0px))] right-0 sm:right-4 w-full sm:w-[400px] max-h-[70vh] glass-solar rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col outline-none border-t border-solarpunk-moss/20"
+            className="fixed z-[998] bottom-[calc(5rem+env(safe-area-inset-bottom,0px))] right-0 sm:right-4 w-full sm:w-[400px] max-h-[70vh] bg-[#10251b] rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col outline-none border border-solarpunk-moss/40"
             variants={panelVariants}
             initial="hidden"
             animate="visible"
@@ -894,7 +894,7 @@ export default function FloatingToolbar() {
                 setActivePanel(null);
                 requestAnimationFrame(() => btn?.focus());
               }}
-              className="absolute top-3 right-3 z-10 p-1.5 rounded-lg bg-cosmic-deep/40 hover:bg-cosmic-deep/60 text-moonlight-white/40 hover:text-moonlight-white transition-colors"
+              className="absolute top-3 right-3 z-10 p-1.5 rounded-lg bg-[#1a3226] hover:bg-[#254434] text-[#f5fff8]/70 hover:text-[#f5fff8] transition-colors"
               aria-label="Close panel"
             >
               <X className="w-4 h-4" />
@@ -914,11 +914,11 @@ export default function FloatingToolbar() {
         <div
           className="
             flex items-center justify-center gap-4
-            glass-solar rounded-none sm:rounded-2xl
+            bg-[#10251b] rounded-none sm:rounded-2xl
             px-5 py-3
             border-t sm:border
-            border-solarpunk-moss/20
-            sm:border-solarpunk-moss/20
+            border-solarpunk-moss/40
+            sm:border-solarpunk-moss/40
           "
           style={{
             borderImage: 'linear-gradient(90deg, #d4a843, #39ff8c) 1',
@@ -951,10 +951,10 @@ export default function FloatingToolbar() {
                   relative flex items-center justify-center
                   w-11 h-11 min-w-[44px] min-h-[44px]
                   rounded-xl transition-all duration-200
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-cosmic-deep
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#10251b]
                   ${isActive
                     ? `ring-2 ${tool.ringClass}`
-                    : 'hover:bg-moonlight-white/5'
+                    : 'hover:bg-[#1a3226]'
                   }
                 `}
                 whileHover={{ scale: 1.08 }}
@@ -972,7 +972,7 @@ export default function FloatingToolbar() {
               >
                 <Icon
                   className="w-5 h-5 transition-colors duration-200"
-                  style={{ color: isActive ? tool.color : 'rgba(232,242,235,0.5)' }}
+                  style={{ color: isActive ? tool.color : 'rgba(245,255,248,0.8)' }}
                 />
 
                 {isActive && (
